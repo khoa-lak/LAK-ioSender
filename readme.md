@@ -23,6 +23,8 @@ Use with care and please [post feedback](https://github.com/terjeio/ioSender/dis
 
 * Fix for add linenumbers option corrupting lines starting with block delete character. Ref. issue [#509](https://github.com/terjeio/ioSender/issues/509).
 
+* Updated uk-UA translation from PR [#507](https://github.com/terjeio/ioSender/pull/507), added zh-TW translation from PR [#488](https://github.com/terjeio/ioSender/pull/488).
+
 #### General
 
 If you want to test ioSender with grblHAL but do not have a board yet you can use the [grblHAL simulator](https://github.com/grblHAL/Simulator).
