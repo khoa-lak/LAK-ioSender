@@ -13,7 +13,15 @@ Please check out the [Wiki](https://github.com/terjeio/Grbl-GCode-Sender/wiki) f
 Edge pre-releases can be [downloaded from here](https://www.io-engineering.com/downloads), they contains changes yet to be incorporated in a main release and might be buggy and even break existing functionality.  
 Use with care and please [post feedback](https://github.com/terjeio/ioSender/discussions/436) on any issues encountered!
 
-No prereleases yet for v2.0.48.
+2.0.48p1:
+
+* Fix for jog buttons firing twice on touch screens, ref. issue [#506](https://github.com/terjeio/ioSender/issues/506).
+
+2.0.48p2:
+
+* Added DRO button for zeroing X and Y at the same time.
+
+* Fix for add linenumbers option corrupting lines starting with block delete character. Ref. issue [#509](https://github.com/terjeio/ioSender/issues/509).
 
 #### General
 
