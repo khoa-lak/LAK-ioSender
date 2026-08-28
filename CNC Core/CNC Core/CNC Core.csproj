@@ -81,6 +81,7 @@
     <Compile Include="SerialStream.cs" />
     <Compile Include="TelnetStream.cs" />
     <Compile Include="WebsocketStream.cs" />
+    <Compile Include="SimulatorStream.cs" />
     <Compile Include="YModem.cs" />
   </ItemGroup>
   <ItemGroup>

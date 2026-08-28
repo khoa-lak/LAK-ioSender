@@ -1,4 +1,4 @@
-﻿/*
+/*
  * AppConfig.cs - part of CNC Controls library
  *
  * v0.47 / 2026-02-11 / Io Engineering (Terje Io)
@@ -511,23 +511,29 @@ namespace CNC.Controls
             if (!string.IsNullOrEmpty(port))
                 selectPort = false;
 
-            if (!selectPort)
+            if (!selectPort && !string.IsNullOrEmpty(port))
             {
-                if (!string.IsNullOrEmpty(port))
+                if (port == "Simulator")
+                {
+                    new SimulatorStream(dispatcher);
+                }
+                else
+                {
                     setPort(port, baud);
 #if USEWEBSOCKET
-                if (Base.PortParams.ToLower().StartsWith("ws://"))
-                    new WebsocketStream(Base.PortParams, dispatcher);
-                else
+                    if (Base.PortParams.ToLower().StartsWith("ws://"))
+                        new WebsocketStream(Base.PortParams, dispatcher);
+                    else
 #endif
-                if (char.IsDigit(Base.PortParams[0])) // We have an IP address
-                    new TelnetStream(Base.PortParams, dispatcher);
-                else
+                    if (char.IsDigit(Base.PortParams[0])) // We have an IP address
+                        new TelnetStream(Base.PortParams, dispatcher);
+                    else
 #if USEELTIMA
-                    new EltimaStream(Config.PortParams, Config.ResetDelay, dispatcher);
+                        new EltimaStream(Config.PortParams, Config.ResetDelay, dispatcher);
 #else
-                    new SerialStream(Base.PortParams, Base.ResetDelay, dispatcher);
+                        new SerialStream(Base.PortParams, Base.ResetDelay, dispatcher);
 #endif
+                }
             }
 
             if ((Comms.com == null || !Comms.com.IsOpen) && string.IsNullOrEmpty(port))
@@ -538,6 +544,10 @@ namespace CNC.Controls
                 if (string.IsNullOrEmpty(port))
                     status = 2;
 
+                else if (port == "Simulator")
+                {
+                    new SimulatorStream(dispatcher);
+                }
                 else
                 {
                     setPort(port, string.Empty);

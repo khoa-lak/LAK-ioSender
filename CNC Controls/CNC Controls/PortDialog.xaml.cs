@@ -1,4 +1,4 @@
-﻿/*
+/*
  * PortDialog.xaml.cs - part of CNC Controls library
  *
  * v0.47 / 2025-09-25 / Io Engineering (Terje Io)
@@ -144,6 +144,12 @@ namespace CNC.Controls
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            Close();
+        }
+
+        private void btnSimulator_Click(object sender, RoutedEventArgs e)
+        {
+            port = "Simulator";
             Close();
         }
     }
