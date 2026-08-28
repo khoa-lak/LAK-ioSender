@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch ioSender (C# Dev Kit)",
+      "type": "dotnet",
+      "request": "launch",
+      "preLaunchTask": "Build ioSender",
+      "program": "${workspaceFolder}/ioSender/ioSender/bin/Debug/ioSender.exe",
+      "args": [],
+      "cwd": "${workspaceFolder}/ioSender/ioSender/bin/Debug",
+      "stopAtEntry": false
+    },
+    {
+      "name": "Launch ioSender (C# Extension)",
+      "type": "coreclr",
+      "request": "launch",
+      "preLaunchTask": "Build ioSender",
+      "program": "${workspaceFolder}/ioSender/ioSender/bin/Debug/ioSender.exe",
+      "args": [],
+      "cwd": "${workspaceFolder}/ioSender/ioSender/bin/Debug",
+      "stopAtEntry": false,
+      "console": "internalConsole"
+    }
+  ]
+}

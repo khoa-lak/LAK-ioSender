@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +29,8 @@ namespace CNC.Controls
         {
             InitializeComponent();
 
-            tsw.Click += tsw_Click;
+            tsw.Checked += tsw_Click;
+            tsw.Unchecked += tsw_Click;
         }
 
         private void tsw_Click(object sender, RoutedEventArgs e)
