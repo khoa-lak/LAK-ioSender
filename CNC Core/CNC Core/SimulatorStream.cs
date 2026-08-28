@@ -27,7 +27,7 @@ namespace CNC.Core
 
         public bool IsOpen { get; private set; }
         public int OutCount => 0;
-        public string Reply => "";
+        public string Reply { get; private set; } = string.Empty;
         public Comms.StreamType StreamType => Comms.StreamType.Serial;
         public Comms.State CommandState { get; set; } = Comms.State.ACK;
         public bool EventMode { get; set; } = true;
@@ -43,12 +43,11 @@ namespace CNC.Core
         public void WriteByte(byte data)
         {
             // Handle single character real-time commands
-            char c = (char)data;
-            if (c == '?')
+            if (data == 0x87 || data == 0x80 || data == (byte)'?')
             {
                 SendResponse("<Idle|MPos:0.000,0.000,0.000|Bf:15,128|FS:0,0|WCO:0.000,0.000,0.000>\r\n");
             }
-            else if (c == 0x18) // Ctrl-X (Reset)
+            else if (data == 0x18) // Ctrl-X (Reset)
             {
                 SendResponse("grblHAL 1.1f [']' for help]\r\n");
             }
@@ -168,7 +167,9 @@ namespace CNC.Core
                         if (i == lines.Length - 1 && string.IsNullOrEmpty(lines[i]))
                             break;
                         
-                        DataReceived.Invoke(lines[i] + "\r");
+                        string line = lines[i] + "\r";
+                        Reply = line;
+                        DataReceived.Invoke(line);
                     }
                 }));
             }
