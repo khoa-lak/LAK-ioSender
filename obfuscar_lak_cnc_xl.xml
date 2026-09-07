@@ -1,4 +1,4 @@
-<?xml version='1.0'?>
+﻿<?xml version='1.0'?>
 <Obfuscator>
   <Var name="InPath" value=".\ioSender XL\ioSender XL\bin\Release" />
   <Var name="OutPath" value=".\Publish\LAK-CNC_XL" />
@@ -15,40 +15,30 @@
   <AssemblySearchPath path="C:\Windows\Microsoft.NET\Framework64\v4.0.30319\WPF" />
   <AssemblySearchPath path="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.2" />
 
-  <!-- WPF UI Assemblies: preserve method & type names for XAML reflection & BAML binding, but hide strings & rename fields & suppress ildasm -->
   <Module file="$(InPath)\LAK-CNC XL.exe">
     <SkipType name="*" skipProperties="true" skipEvents="true" skipMethods="true" />
   </Module>
-
   <Module file="$(InPath)\CNC.Controls.WPF.dll">
     <SkipType name="*" skipProperties="true" skipEvents="true" skipMethods="true" />
   </Module>
-
   <Module file="$(InPath)\CNC.Controls.Lathe.dll">
     <SkipType name="*" skipProperties="true" skipEvents="true" skipMethods="true" />
   </Module>
-
   <Module file="$(InPath)\CNC.Controls.Probing.dll">
     <SkipType name="*" skipProperties="true" skipEvents="true" skipMethods="true" />
   </Module>
-
   <Module file="$(InPath)\CNC.Controls.Viewer.dll">
     <SkipType name="*" skipProperties="true" skipEvents="true" skipMethods="true" />
   </Module>
-
   <Module file="$(InPath)\CNC.Controls.DragKnife.dll">
     <SkipType name="*" skipProperties="true" skipEvents="true" skipMethods="true" />
   </Module>
-
   <Module file="$(InPath)\CNC.Controls.Camera.dll">
     <SkipType name="*" skipProperties="true" skipEvents="true" skipMethods="true" />
   </Module>
-
   <Module file="$(InPath)\CNC.Converters.dll">
     <SkipType name="*" skipProperties="true" skipEvents="true" skipMethods="true" />
   </Module>
-
-  <!-- Core Grbl / CNC logic: Obfuscate & protect -->
   <Module file="$(InPath)\CNC.Core.dll">
     <SkipType name="CNC.Core.GrblViewModel" skipProperties="true" skipEvents="true" skipMethods="true" />
     <SkipType name="CNC.Core.ViewModelBase" skipProperties="true" skipEvents="true" skipMethods="true" />

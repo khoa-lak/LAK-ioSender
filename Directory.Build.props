@@ -1,0 +1,10 @@
+<Project>
+  <PropertyGroup>
+    <!-- ============================================================== -->
+    <!-- ĐỔI TÊN ỨNG DỤNG TẠI ĐÂY (TẤT CẢ MỌI NƠI SẼ TỰ ĐỘNG ĐỔI THEO) -->
+    <!-- ============================================================== -->
+    <AppBaseName>LAK-CNC</AppBaseName>
+    <AppCompany>LAK-CNC</AppCompany>
+    <AppCopyright>Copyright © 2026 LAK-CNC</AppCopyright>
+  </PropertyGroup>
+</Project>

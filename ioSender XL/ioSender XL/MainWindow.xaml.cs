@@ -71,7 +71,8 @@ namespace GCode_Sender
 
             ui = this;
 //            GCodeViewer = viewer;
-            Title = string.Format(Title, version);
+            string appName = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
+            Title = $"{appName} ({version})";
 
             int res;
             if ((res = AppConfig.Settings.SetupAndOpen(Title, (GrblViewModel)DataContext, App.Current.Dispatcher)) != 0)
