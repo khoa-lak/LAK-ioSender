@@ -1,10 +1,39 @@
 <Project>
   <PropertyGroup>
-    <!-- ============================================================== -->
-    <!-- ĐỔI TÊN ỨNG DỤNG TẠI ĐÂY (TẤT CẢ MỌI NƠI SẼ TỰ ĐỘNG ĐỔI THEO) -->
-    <!-- ============================================================== -->
+    <!-- ================================================================= -->
+    <!-- CẤU HÌNH TẬP TRUNG: ĐỔI TÊN & MẬT KHẨU TOÀN BỘ ỨNG DỤNG TẠI ĐÂY   -->
+    <!-- ================================================================= -->
     <AppBaseName>LAK-CNC</AppBaseName>
     <AppCompany>LAK-CNC</AppCompany>
     <AppCopyright>Copyright © 2026 LAK-CNC</AppCopyright>
+
+    <!-- BẬT/TẮT MẬT KHẨU KHI KHỞI CHẠY (true = Bật, false = Tắt) -->
+    <RequirePassword>true</RequirePassword>
+
+    <!-- MẬT KHẨU KHỞI CHẠY CHƯƠNG TRÌNH -->
+    <AppPassword>LAKCNC@2026</AppPassword>
   </PropertyGroup>
+
+  <!-- Tự động sinh mã nguồn cấu hình bảo mật khi Build -->
+  <Target Name="GenerateAppSecurityCode" BeforeTargets="CoreCompile">
+    <PropertyGroup>
+      <SecFile>$(IntermediateOutputPath)AppSecurityConfig.g.cs</SecFile>
+      <SecLines>
+// &lt;auto-generated /&gt;
+namespace CNC.Core
+{
+    public static class AppSecurityConfig
+    {
+        public const string AppName = "$(AppBaseName)"%3B
+        public const bool IsPasswordRequired = $(RequirePassword)%3B
+        public const string ExpectedPassword = "$(AppPassword)"%3B
+    }
+}
+      </SecLines>
+    </PropertyGroup>
+    <WriteLinesToFile File="$(SecFile)" Lines="$(SecLines)" Overwrite="true" />
+    <ItemGroup>
+      <Compile Include="$(SecFile)" />
+    </ItemGroup>
+  </Target>
 </Project>

@@ -74,6 +74,12 @@ namespace GCode_Sender
             string appName = System.Reflection.Assembly.GetExecutingAssembly().GetName().Name;
             Title = $"{appName} ({version})";
 
+            if (!CNC.Controls.AppSecurity.Authenticate(appName))
+            {
+                Environment.Exit(0);
+                return;
+            }
+
             int res;
             if ((res = AppConfig.Settings.SetupAndOpen(Title, (GrblViewModel)DataContext, App.Current.Dispatcher)) != 0)
                 Environment.Exit(res);
