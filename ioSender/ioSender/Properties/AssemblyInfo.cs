@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ioSender")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("LAK-CNC")]
+[assembly: AssemblyDescription("LAK-CNC Machine Controller")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Io Engineering")]
-[assembly: AssemblyProduct("ioSender")]
-[assembly: AssemblyCopyright("Copyright © 2025 Io Engineering")]
+[assembly: AssemblyCompany("LAK-CNC")]
+[assembly: AssemblyProduct("LAK-CNC")]
+[assembly: AssemblyCopyright("Copyright © 2026 LAK-CNC")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en-US", UltimateResourceFallbackLocation.Satellite)]

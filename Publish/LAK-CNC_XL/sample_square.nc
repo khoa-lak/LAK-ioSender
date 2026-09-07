@@ -1,0 +1,13 @@
+(Sample Square GCode)
+G21 ; Millimeter units
+G90 ; Absolute positioning
+G0 Z5.000 F500
+G0 X0.000 Y0.000
+G1 Z-1.000 F100
+G1 X50.000 Y0.000 F300
+G1 X50.000 Y50.000
+G1 X0.000 Y50.000
+G1 X0.000 Y0.000
+G0 Z5.000
+G0 X0 Y0
+M30
