@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Grbl.cs - part of CNC Controls library
  *
  * v0.47 / 2026-04-29 / Io Engineering (Terje Io)
@@ -1265,6 +1265,7 @@ namespace CNC.Core
             int retries = 10;
 
             PollGrbl.Suspend();
+            model.Silent = true;
             CancellationToken cancellationToken = new CancellationToken();
 
             while (retries-- > 0)
@@ -1309,7 +1310,11 @@ namespace CNC.Core
             else if (!Resources.IsLegacyController)
                 IsGrblHAL = model.Firmware == "grblHAL";
 
+            model.Silent = false;
             PollGrbl.Resume();
+
+            if (Comms.com.Reply.StartsWith("<"))
+                model.ParseStatus(Comms.com.Reply);
 
             return Comms.com.Reply;
         }

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * App.xaml.cs - part of Grbl Code Sender
  *
  * v0.37 / 2022-02-20 / Io Engineering (Terje Io)
@@ -100,23 +100,27 @@ namespace GCode_Sender
         }
 
         private void CurrentDomainOnUnhandledException(object sender, UnhandledExceptionEventArgs args)
-        { 
-            MessageBox.Show("Unhandled exception occured: " + (args.ExceptionObject as Exception).Message, "CurrentDomainException");
+        {
+            var ex = args.ExceptionObject as Exception;
+            System.IO.File.WriteAllText(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "crash.log"), "CurrentDomainException: " + ex?.ToString());
+            MessageBox.Show("Unhandled exception occured: " + ex?.Message, "CurrentDomainException");
         }
 
         private void DispatcherOnUnhandledException(object sender, DispatcherUnhandledExceptionEventArgs args)
         {
             args.Handled = true;
-
-            MessageBox.Show("Unhandled exception occured: " + (args.Exception as Exception).Message, "DispatcherException");
+            var ex = args.Exception as Exception;
+            System.IO.File.WriteAllText(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "crash.log"), "DispatcherException: " + ex?.ToString());
+            MessageBox.Show("Unhandled exception occured: " + ex?.Message, "DispatcherException");
             Environment.Exit(-1);
         }
 
         private void TaskSchedulerOnUnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs args)
         {
             args.SetObserved();
-
-            MessageBox.Show("Unhandled exception occured: " + (args.Exception.GetBaseException() as Exception).Message, "TaskSchedulerException");
+            var ex = args.Exception.GetBaseException() as Exception;
+            System.IO.File.WriteAllText(System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "crash.log"), "TaskSchedulerException: " + ex?.ToString());
+            MessageBox.Show("Unhandled exception occured: " + ex?.Message, "TaskSchedulerException");
         }
     }
 }

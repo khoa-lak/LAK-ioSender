@@ -1,4 +1,4 @@
-﻿/*
+/*
  * JogFlyoutControl.xaml.cs - part of CNC Controls library
  *
  * v0.45 / 2024-05-20 / Io Engineering (Terje Io)
@@ -39,12 +39,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System.ComponentModel;
 using System.Windows;
+using System.Windows.Controls;
 using CNC.Core;
 using System.Windows.Input;
 
 namespace CNC.Controls
 {
-    public partial class JogFlyoutControl : ISidebarControl
+    public partial class JogFlyoutControl : UserControl, ISidebarControl
     {
         public JogFlyoutControl()
         {
@@ -91,7 +92,7 @@ namespace CNC.Controls
         protected override void OnPreviewKeyUp(KeyEventArgs e)
         {
             if (!(e.Handled = ProcessKeyPreview(e)))
-                base.OnPreviewKeyDown(e);
+                base.OnPreviewKeyUp(e);
         }
 
         protected bool ProcessKeyPreview(KeyEventArgs e)

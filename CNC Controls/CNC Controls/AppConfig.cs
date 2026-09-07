@@ -487,16 +487,11 @@ namespace CNC.Controls
 
             if (!Load(CNC.Core.Resources.IniFile))
             {
-                if (MessageBox.Show(LibStrings.FindResource("CreateConfig"), appname, MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (!Save(CNC.Core.Resources.IniFile))
                 {
-                    if (!Save(CNC.Core.Resources.IniFile))
-                    {
-                        MessageBox.Show(LibStrings.FindResource("CreateConfigFail"), appname);
-                        status = 1;
-                    }
+                    MessageBox.Show(LibStrings.FindResource("CreateConfigFail"), appname);
+                    status = 1;
                 }
-                else
-                    return 1;
             }
 
             Base.Themes.Add("Standard", LibStrings.FindResource("ThemeDefault"));
@@ -536,7 +531,7 @@ namespace CNC.Controls
                 }
             }
 
-            if ((Comms.com == null || !Comms.com.IsOpen) && string.IsNullOrEmpty(port))
+            if (Comms.com == null || !Comms.com.IsOpen)
             {
                 PortDialog portsel = new PortDialog();
 
