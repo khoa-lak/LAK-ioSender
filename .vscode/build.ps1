@@ -1,3 +1,8 @@
+param (
+    [string]$Target = "Build",
+    [string]$Configuration = "Debug"
+)
+
 $paths = @(
     "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\MSBuild.exe",
     "${env:ProgramFiles}\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\MSBuild.exe",
@@ -20,7 +25,7 @@ if (-not $msbuild) {
 }
 
 if ($msbuild) {
-    & $msbuild "$PSScriptRoot\..\ioSender\ioSender.sln" /t:Build /p:Configuration=Debug
+    & $msbuild "$PSScriptRoot\..\ioSender\ioSender.sln" /t:$Target /p:Configuration=$Configuration
 } else {
     throw "MSBuild.exe not found. Please ensure Build Tools is installed correctly."
 }
